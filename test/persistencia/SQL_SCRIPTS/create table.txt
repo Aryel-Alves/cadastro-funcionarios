@@ -1,0 +1,10 @@
+create table if not exists funcionario (
+    idFuncionario int unsigned not null AUTO_INCREMENT PRIMARY KEY,
+    nome varchar(60),
+    profissao varchar(45),
+    endereco varchar(100),
+    telefone varchar(20),
+    estado_civil varchar(45),
+    data_ingresso DATE,
+    salario_base foat,
+) ENGINE=MyISAM DEFAULT Charset=utf8;
