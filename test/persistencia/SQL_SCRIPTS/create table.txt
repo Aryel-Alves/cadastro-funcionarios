@@ -6,5 +6,5 @@ create table if not exists funcionario (
     telefone varchar(20),
     estado_civil varchar(45),
     data_ingresso DATE,
-    salario_base foat,
+    salario_base float
 ) ENGINE=MyISAM DEFAULT Charset=utf8;

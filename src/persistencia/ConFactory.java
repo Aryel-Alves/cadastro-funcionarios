@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConFactory {
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/dbconsultorio", "root","");
+            return DriverManager.getConnection("jdbc:mysql://localhost/db_funcionarios", "root","");
         }
         catch (SQLException excecao){
             throw new RuntimeException(excecao);

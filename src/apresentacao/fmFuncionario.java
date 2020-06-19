@@ -50,6 +50,8 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         txtTelefone = new javax.swing.JFormattedTextField();
         cbEstadoCivil = new javax.swing.JComboBox<>();
         txtProfissao = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtSalario_base = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
@@ -107,7 +109,7 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
-        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Casado", "Viuvo" }));
+        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Casado", "Divorciado", "Viuvo" }));
         cbEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEstadoCivilActionPerformed(evt);
@@ -117,6 +119,19 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         txtProfissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProfissaoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Salario Base:");
+
+        txtSalario_base.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalario_baseActionPerformed(evt);
+            }
+        });
+        txtSalario_base.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSalario_baseKeyTyped(evt);
             }
         });
 
@@ -131,12 +146,14 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                             .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                            .addComponent(txtProfissao))
+                            .addComponent(txtProfissao)
+                            .addComponent(txtSalario_base, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -149,7 +166,7 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 24, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
@@ -182,7 +199,11 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtSalario_base, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -240,9 +261,9 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar)
                     .addComponent(btSair)
@@ -257,7 +278,6 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    File arquivoFoto = null;
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         int valor = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja salvar ?", "Sistema Consultorio Médicos", 1);
         if(valor==0){
@@ -279,6 +299,7 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
             funcionario.setEndereco(txtEndereco.getText());
             funcionario.setTelefone(txtTelefone.getText());
             funcionario.setEstado_civil(cbEstadoCivil.getSelectedItem().toString());
+            funcionario.setSalario_base(Float.parseFloat(txtSalario_base.getText()));
                         
             // gravamos os dados
             FuncionarioDAO dao = new FuncionarioDAO();
@@ -313,6 +334,17 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProfissaoActionPerformed
 
+    private void txtSalario_baseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalario_baseKeyTyped
+        char c = evt.getKeyChar();
+        if(Character.isLetter(c) && !evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSalario_baseKeyTyped
+
+    private void txtSalario_baseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalario_baseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalario_baseActionPerformed
+
     
     private void habilitar (boolean valor){
         txtNome.setEnabled(valor);
@@ -323,6 +355,7 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         cbEstadoCivil.setEnabled(valor);
         btSalvar.setEnabled(valor);
         btSair.setEnabled(valor);
+        txtSalario_base.setEnabled(valor);
     }
     
     private void limpar (){
@@ -331,6 +364,7 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
         txtData.setText("");
         txtEndereco.setText("");
         txtTelefone.setText("");
+        txtSalario_base.setText("");
         cbEstadoCivil.setSelectedIndex(0);
       
     }
@@ -347,11 +381,13 @@ public class fmFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtProfissao;
+    private javax.swing.JTextField txtSalario_base;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

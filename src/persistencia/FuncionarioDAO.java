@@ -22,8 +22,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
     
     @Override
     public void adiciona(Funcionario funcionario)  {
-        String sql = "insert into paciente " + 
-                "(nome, profissao, endereco, telefone, estado_civil, data_de_ingresso, salario_base)" +
+        String sql = "insert into funcionario " + 
+                "(nome, profissao, endereco, telefone, estado_civil, data_ingresso, salario_base)" +
                 " values (?,?,?,?,?,?,?)";
         
         try {
